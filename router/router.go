@@ -88,6 +88,7 @@ func setAccountController(e *echo.Echo, container container.Container) {
 func setHealthController(e *echo.Echo, container container.Container) {
 	health := controller.NewHealthController(container)
 	e.GET(controller.APIHealth, func(c echo.Context) error { return health.GetHealthCheck(c) })
+	e.HEAD(controller.APIHealth, func(c echo.Context) error { return health.GetHealthCheck(c) })
 }
 
 func setSwagger(container container.Container, e *echo.Echo) {
